@@ -16,6 +16,7 @@ local opts = {
   nowait = true,
 }
 
+
 local mappings = {
   ["w"] = { "<cmd>w<CR>", "Save" },
   ["q"] = { "<cmd>q<CR>", "Quit" },

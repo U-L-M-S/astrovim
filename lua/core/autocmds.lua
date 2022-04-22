@@ -10,6 +10,14 @@ vim.cmd [[
 ]]
 
 vim.cmd [[
+  augroup foldering
+    autocmd!
+    autocmd BufWinLeave *.* mkview
+    autocmd BufWinEnter *.* silent loadview
+  augroup end
+]]
+
+vim.cmd [[
   augroup cursor_off
     autocmd!
     autocmd WinLeave * set nocursorline
@@ -17,7 +25,6 @@ vim.cmd [[
   augroup end
 ]]
 vim.cmd [[
-
   "To run C/C++ inside nvim
     map <F4> :w <CR> :!gcc % -o .%< && ./.%< && rm .%< <CR>
     "imap <F4> :w <CR> :!gcc % -o %< && ./%< <CR>
@@ -27,6 +34,7 @@ vim.cmd [[
     autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
   ]]
+
 if utils.is_available "dashboard-nvim" and utils.is_available "bufferline.nvim" then
   vim.cmd [[
     augroup dashboard_settings
